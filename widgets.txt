@@ -1,0 +1,123 @@
+
+<!--// Отзывы-->
+<?php
+  $recent= new WP_Query( array(
+  'numberposts' => 1,
+  'category_name' => 'response',
+  'orderby' => 'rand',
+));
+if($recent->have_posts()) : $recent->the_post();?>
+    <div class="widget-body">
+    <h6><? the_title() ?></h6>
+   <p><? do_excerpt(get_the_excerpt(), 15, '') ?></p>
+    <a class="more" href="<? echo get_option('home') ?>/topics/response/" >все отзывы</a>
+    </div>
+<? endif ?>
+<? wp_reset_query() ?>
+
+<!--// Обратная связь -->
+<div class="widget-body">
+    <p>Отправить запрос на подбор персонала или своё резюме</p>
+
+    <input type="button" class="Buttons" value="отправить" onClick="document.getElementById('response-form-2').style.display='block';"/> 
+</div>
+
+<div id="response-form-2" class="response-form">
+[contact-form-7 id="345" title="Обратная связь"]
+  <a href="#" onClick="document.getElementById('response-form-2').style.display='none'; " >Скрыть</a>
+</div>
+
+<!--// Статьи -->
+<?php
+  $recent= new WP_Query( array(
+  'numberposts' => 1,
+  'category_name' => 'articles',
+  'order' => 'DESC',
+));
+if($recent->have_posts()) : $recent->the_post();?>
+    <div class="widget-body">
+    <h6><? the_title() ?></h6>
+   <p><? do_excerpt(get_the_excerpt(), 14) ?></p>
+    <a class="more" href="<? echo get_option('home') ?>/topics/articles/" >все статьи</a>
+    </div>
+<? endif ?>
+<? wp_reset_query() ?>
+
+
+<!--//Партнеры -->
+<div id="partners">
+<ul>
+  <?php
+    $recent= new WP_Query( array(
+    'numberposts' => 6,
+    'category_name' => 'partners',
+  )); ?>
+  <? while($recent->have_posts()) : $recent->the_post() ?>
+<li><a href="<?php the_permalink() ?>" ><?=catch_that_image(60) ?></a></li>
+  <? endwhile ?>
+  <? wp_reset_query() ?>
+</ul>
+<a  class="more" href="<? echo get_option('home') ?>/partners">все партнеры</a>
+</div>
+
+
+<!--// Вакансии -->
+<?php
+  $recent = new WP_Query( array(
+  'category_name' => 'vacancy',
+  'order' => 'ASC',));
+?>
+<div class="container">
+  <ul class="float-block carousel">
+
+    <? while($recent->have_posts()) : $recent->the_post() ?>
+      <li>
+        <a href="<?php the_permalink() ?>" >
+          <h6><? the_title() ?></h6>
+          <?php
+            $city = get_post_meta(get_the_ID(), 'Город', 1);
+            $type = get_post_meta(get_the_ID(), 'Сфера', 1);
+          ?>
+
+          <? if ( $city !== '' ): ?>
+            <ul class='post-meta'>
+              <li><span class='post-meta-key'>Город: </span><?=$city ?></li>
+              <li><span class='post-meta-key'>Сфера: </span><?=$type ?></li>
+            </ul>
+          <? endif ?>
+        
+          <? if(has_post_thumbnail()) the_post_thumbnail('thumbnail') ?>
+          <? //do_excerpt(the_excerpt(), 30) ?>
+        </a>
+      </li>
+    <? endwhile; ?>
+    <? wp_reset_query() ?>
+  </ul>
+</div>
+
+
+<!--//Контактная форма 1 -->
+<div id="response-form-1" class="response-form">
+[contact-form-7 id="221" title="Отзывы"]
+  <a href="#" onClick="document.getElementById('response-form-1').style.display='none'; " >Скрыть</a>
+</div>
+
+<!--// Сокращенные статьи -->
+<div id="short-articles">
+<ul class="float-block">
+<?php
+  $recent= new WP_Query( array(
+  'category_name' => 'articles',
+  'orderby' => 'rand',
+));
+for( $i = 0; $i < 3; $i++): $recent->the_post() ?>
+  <li>
+    <?=catch_that_image(80) ?>
+    <h6><? the_title() ?></h6>
+    <? do_excerpt(get_the_excerpt(), 8) ?>
+    <a href="<?  the_permalink() ?>" >подробнее&hellip;</a>
+  </li>
+  <? endfor ?>
+  <? wp_reset_query() ?>
+</ul>
+</div>
