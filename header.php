@@ -18,10 +18,13 @@
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.1/build/cssreset/cssreset-min.css">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_uri() ?>" media="screen" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ) ?>" />
+	
 	<?php wp_head() ?>
+	
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ) ?>
-	<script src="<? echo get_template_directory_uri() ?>/js/jquery.min.js"></script>
+	
 	<script src="<? echo get_template_directory_uri() ?>/js/menu-uslugi.min.js"></script>
+	
 	<script src="<? echo get_template_directory_uri() ?>/js/vacancy-carousel.min.js"></script> 
 	<script>
 	        $(document).ready(function() {

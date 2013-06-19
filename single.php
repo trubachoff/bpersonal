@@ -46,7 +46,7 @@ get_header() ?>
 						        </ul>
 
 								<?php the_content('Читать далее &raquo;'); ?>
-								
+
 								<?php wp_link_pages(array( 'before' => '<div class="page-link">', 'after' => '</div>' )); ?>
 								
 								<div class="entry-meta">
@@ -60,8 +60,9 @@ get_header() ?>
 
 							</article>
 					<?php endwhile ?>
+
 					<?php comments_template(); ?>
-					<?php //comment_form() ?>
+					
 				<?php else: ?>
 					<article>
 						<h1><?php _e( 'Нет записей' ) ?></h1>
