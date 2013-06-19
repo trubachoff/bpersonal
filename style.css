@@ -501,7 +501,7 @@ img.attachment-thumbnail {
 #main article strong {
 	font-weight: bold;
 }
-#main article p:first-letter {
+#main article>p:first-letter {
     font-weight: bold;
 }
 #main article>p {
@@ -552,7 +552,26 @@ div#short-articles {
 	margin: 3px 0 0 5px;
 	font-size: normal;
 }
-
+p.data-published {
+	display: inline-block;
+	color: #e97632;
+	margin: 5pt;
+}
+span.edit-link {
+	display: inline-block;
+	float: right;
+	width: 16px;
+	height: 16px;
+	background: url(../../../wp-admin/images/welcome-icons.png) 0 200px;
+	margin: 5pt;
+}
+a.post-edit-link {
+display: block;
+	width: 16px;
+	height: 16px;
+	overflow: hidden;
+	opacity: 0;
+}
 
 /* widget-box
 -----------------------------------------------------------------------------*/
@@ -693,30 +712,6 @@ div#response-form-2 {
     list-style: url(images/bullet-small.png);
     margin-bottom: 3px;
 }
-/*#menu-uslugi ul li {
-	margin-top: -19pt;
-	-moz-transition:  0.4s linear 0.4s;
-	-ms-transition: 0.4s linear 0.4s;
-	-o-transition: 0.4s linear 0.4s;
-	-webkit-transition: 0.4s linear 0.4s;
-	transition: 0.4s linear 0.4s;
-	opacity: 0;
-}
-#menu-uslugi a:focus ~ ul li {
-    margin-top:0;
-    -moz-transition:  0.4s linear;
-    -ms-transition: 0.4s linear;
-    -o-transition: 0.4s linears;
-    -webkit-transition: 0.4s linears;
-    transition: 0.4s linear;
-    opacity: 1;
-}
-#menu-uslugi a:active ~ ul li {
-    margin-top:0;
-}
-#menu-uslugi ul:hover {
-    display:block;
-}*/
 
 /*** partners ***/
 #special-bar #partners {
@@ -798,24 +793,60 @@ footer p {
 
 /* Comments
 -----------------------------------------------------------------------------*/
-a.post-edit-link {
+div.entry-meta {
+	clear: both;
+}
+#respond textarea#comment {
+	max-width: 520px;
+	width: 520px;
+	height: 100px;
+	margin: 10px 0;	
+}
+#respond input#submit {
+	margin-bottom: 15px;
+}
+p.nocomments {
+	color: silver;
+	font-size: small;
 	float: right;
+}
+#respond > h3 {
+	margin: 15pt 0 5pt;
 }
 h3#comments {
 	clear: both;
-	padding: 5pt 0;
-	margin: 1em 0;
+	padding: 5pt 0 10pt;
+	margin-top: 20pt;
+	display: block;
 	border-top: 2px solid silver;
 	border-bottom: 2px solid silver;
 }
 ol.commentlist>li {
 	list-style: none;
+	padding-top: 15pt;
+	padding-left:  15pt;
 }
 .commentlist li {
 	list-style: none;
+	padding-top: 5pt;
+	padding-left:  25pt;
 }
-
-
+.comment-meta {
+	font-size: small;
+	float: right;
+}
+.comment-author {
+	font-size: small;
+	float: left;
+}
+.comment-reply-link {
+	font-size: small;
+	margin-bottom: 15pt;
+}
+.comment-body p {
+	padding: 5pt 0 5pt 10pt;
+	clear: both;
+}
 
 /* Media Print
 -----------------------------------------------------------------------------*/

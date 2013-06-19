@@ -45,12 +45,18 @@ get_header() ?>
 						          	<? endif ?>
 						        </ul>
 
-								<?php the_content(); ?>
+								<?php the_content('Читать далее &raquo;'); ?>
 								
-								<p><small>Опубликовано: <?php the_time('l, j F Y') ?> [<?php the_time() ?>]</small></p>
+								<?php wp_link_pages(array( 'before' => '<div class="page-link">', 'after' => '</div>' )); ?>
+								
+								<div class="entry-meta">
+									<p class="data-published"><?php the_time('j F Y') ?></p>
 
-								<?php wp_link_pages(); ?>
-								<?php edit_post_link(); ?>
+									<?php edit_post_link( __( 'Edit'), '<span class="edit-link">', '</span>' ); ?>
+
+									<?php wp_link_pages(); ?>
+								</div>
+								
 
 							</article>
 					<?php endwhile ?>

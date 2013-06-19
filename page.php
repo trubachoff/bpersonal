@@ -31,7 +31,13 @@ get_header() ?>
 						<h1><?php the_title(); ?></h1>
 						<?php the_content('Читать далее &raquo;'); ?>
 						<?php wp_link_pages(array( 'before' => '<div class="page-link">', 'after' => '</div>' )); ?>
-						<?php edit_post_link(); ?>
+						
+						<div class="entry-meta">
+							<p class="data-published"><?php //the_time('j F Y') ?></p>
+							<?php edit_post_link( __( 'Edit'), '<span class="edit-link">', '</span>' ); ?>
+							<?php wp_link_pages(); ?>
+						</div>
+
 					</article>
 					<?php comments_template( '', true ); ?>
 					<hr />
